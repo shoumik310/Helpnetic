@@ -29,38 +29,40 @@ class _ImageScreenState extends State<ImageScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: CustomScrollView(
-        primary: false,
-        slivers: <Widget>[
-          SliverPadding(
-            padding: EdgeInsets.all(20),
-            sliver: SliverGrid.count(
-              crossAxisCount: 2,
-              children: <Widget>[
-                ImageButton(
-                  image: 'Car.jpg',
-                  audio: '_Car.mp3',
-                  language: language,
-                ),
-                ImageButton(
-                  image: 'Apple.jpg',
-                  audio: '_Apple.mp3',
-                  language: language,
-                ),
-                ImageButton(
-                  image: 'Chocolate.jpg',
-                  audio: '_Chocolate.mp3',
-                  language: language,
-                ),
-                ImageButton(
-                  image: 'Play.jpg',
-                  audio: '_Play.mp3',
-                  language: language,
-                )
-              ],
-            ),
-          )
-        ],
+      child: Scaffold(
+        body: CustomScrollView(
+          primary: false,
+          slivers: <Widget>[
+            SliverPadding(
+              padding: EdgeInsets.all(20),
+              sliver: SliverGrid.count(
+                crossAxisCount: 2,
+                children: <Widget>[
+                  ImageButton(
+                    image: 'Car.jpg',
+                    audio: '_Car.mp3',
+                    language: language,
+                  ),
+                  ImageButton(
+                    image: 'Apple.jpg',
+                    audio: '_Apple.mp3',
+                    language: language,
+                  ),
+                  ImageButton(
+                    image: 'Chocolate.jpg',
+                    audio: '_Chocolate.mp3',
+                    language: language,
+                  ),
+                  ImageButton(
+                    image: 'Play.jpg',
+                    audio: '_Play.mp3',
+                    language: language,
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

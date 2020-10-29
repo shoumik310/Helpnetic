@@ -40,8 +40,15 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
+          SizedBox(
+            height: 20,
+          ),
+          Image(
+            color: Colors.white,
+            image: AssetImage('assets/images/Helpnetic.png'),
+          ),
           Row(
             children: <Widget>[
               FlatButton(
@@ -55,17 +62,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   alignment: Alignment.center,
                   children: [
                     CircleAvatar(
-                      radius: width / 6,
+                      radius: width / 7,
                       backgroundImage: AssetImage('assets/images/Apple.jpg'),
                     ),
                     CircularText(
-                      radius: width / 4,
+                      radius: width / 5,
                       children: [
                         TextItem(
                           text: Text(
                             "Picture Mode".toUpperCase(),
                             style: TextStyle(
-                              fontSize: 28,
+                              fontSize: 20,
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
@@ -81,14 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SizedBox(
-                width: width / 3,
-              )
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              SizedBox(
-                width: width / 3,
+                width: width / 25,
               ),
               FlatButton(
                 onPressed: () async {
@@ -101,22 +101,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   alignment: Alignment.center,
                   children: [
                     CircleAvatar(
-                      radius: width / 6,
+                      radius: width / 7,
                       backgroundImage: AssetImage('assets/images/Smile.png'),
                     ),
                     CircularText(
-                      radius: width / 4,
+                      radius: width / 5,
                       children: [
                         TextItem(
                           text: Text(
                             "Emoji Mode".toUpperCase(),
                             style: TextStyle(
-                              fontSize: 28,
+                              fontSize: 20,
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          space: 12,
+                          space: 13,
                           startAngle: -90,
                           startAngleAlignment: StartAngleAlignment.center,
                           direction: CircularTextDirection.clockwise,
@@ -128,26 +128,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-          RoundedButton(
-            title: "Picture Mode",
-            onPressed: () async {
-              final _prefs = await SharedPreferences.getInstance();
-              _prefs.setInt('index', language);
-              _prefs.setString('language', languages[language]);
-              Navigator.pushNamed(context, ImageScreen.id);
-            },
-          ),
-          RoundedButton(
-            title: "Emoji Mode",
-            onPressed: () async {
-              final _prefs = await SharedPreferences.getInstance();
-              _prefs.setInt('index', language);
-              _prefs.setString('language', languages[language]);
-              Navigator.pushNamed(context, EmojiScreen.id);
-            },
-          ),
           Center(
             child: ToggleSwitch(
+              minWidth: 3 * width / 4,
+              minHeight: 90.0,
+              fontSize: 35.0,
               activeBgColor: Colors.white,
               inactiveBgColor: Colors.black,
               initialLabelIndex: language,
@@ -157,6 +142,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 print('Switched to: $language');
               },
             ),
+          ),
+          SizedBox(
+            height: 20,
           ),
         ],
       ),
