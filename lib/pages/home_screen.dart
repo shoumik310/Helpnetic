@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:helpnetic/components/rounded_button.dart';
-import 'package:helpnetic/pages/emoji_screen.dart';
 import 'package:helpnetic/pages/image_screen.dart';
+import 'package:helpnetic/pages/emoji_screen.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_circular_text/circular_text.dart';
+import '../components/rit_button.dart';
 
 Future<int> _getLanguage() async {
   final _prefs = await SharedPreferences.getInstance();
@@ -51,81 +51,33 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Row(
             children: <Widget>[
-              FlatButton(
-                onPressed: () async {
-                  final _prefs = await SharedPreferences.getInstance();
-                  _prefs.setInt('index', language);
-                  _prefs.setString('language', languages[language]);
-                  Navigator.pushNamed(context, ImageScreen.id);
-                },
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: width / 7,
-                      backgroundImage: AssetImage('assets/images/Apple.jpg'),
-                    ),
-                    CircularText(
-                      radius: width / 5,
-                      children: [
-                        TextItem(
-                          text: Text(
-                            "Picture Mode".toUpperCase(),
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          space: 12,
-                          startAngle: -90,
-                          startAngleAlignment: StartAngleAlignment.center,
-                          direction: CircularTextDirection.clockwise,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              RITButton(
+                  text: "Picture Mode",
+                  image: "Apple.jpg",
+                  onPressed: () async {
+                    final _prefs = await SharedPreferences.getInstance();
+                    _prefs.setInt('index', language);
+                    _prefs.setString('language', languages[language]);
+                    Navigator.pushNamed(context, ImageScreen.id);
+                  },
+                  language: language,
+                  languages: languages,
+                  width: width),
               SizedBox(
                 width: width / 25,
               ),
-              FlatButton(
-                onPressed: () async {
-                  final _prefs = await SharedPreferences.getInstance();
-                  _prefs.setInt('index', language);
-                  _prefs.setString('language', languages[language]);
-                  Navigator.pushNamed(context, EmojiScreen.id);
-                },
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: width / 7,
-                      backgroundImage: AssetImage('assets/images/Smile.png'),
-                    ),
-                    CircularText(
-                      radius: width / 5,
-                      children: [
-                        TextItem(
-                          text: Text(
-                            "Emoji Mode".toUpperCase(),
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          space: 13,
-                          startAngle: -90,
-                          startAngleAlignment: StartAngleAlignment.center,
-                          direction: CircularTextDirection.clockwise,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              RITButton(
+                  text: "Emoji Mode",
+                  image: "Smile.png",
+                  onPressed: () async {
+                    final _prefs = await SharedPreferences.getInstance();
+                    _prefs.setInt('index', language);
+                    _prefs.setString('language', languages[language]);
+                    Navigator.pushNamed(context, EmojiScreen.id);
+                  },
+                  language: language,
+                  languages: languages,
+                  width: width),
             ],
           ),
           Center(
